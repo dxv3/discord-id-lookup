@@ -2,21 +2,84 @@
 <html>
 <head>
     <title>Discord User Information</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        p {
+            margin: 10px 0;
+        }
+        img {
+            border-radius: 10px;
+            max-width: 100%;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        .banner {
+            margin: 20px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4caf50;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>User Information</h1>
-    <p><strong>Username:</strong> {{ user_data.username }}#{{ user_data.discriminator }}</p>
-    <p><strong>ID:</strong> {{ user_data.id }}</p>
-    <p><strong>Badges:</strong> {{ user_data.badges | join(', ') }}</p>
-    <p><strong>Account Created:</strong> {{ user_data.created_at }}</p>
-    <p><strong>Profile Picture:</strong> <img src="https://cdn.discordapp.com/avatars/{{ user_data.id }}/{{ user_data.avatar }}.png?size=1024" alt="Profile Picture"></p>
-    {% if user_data.banner %}
-        <p><strong>Banner:</strong> <img src="https://cdn.discordapp.com/banners/{{ user_data.id }}/{{ user_data.banner }}.png?size=1024" alt="User Banner"></p>
-    {% elif user_data.banner_color %}
-        <p><strong>Banner Color:</strong> <div style="width:100px; height:50px; background-color:{{ user_data.banner_color }}"></div></p>
-    {% else %}
-        <p><strong>No Banner or Banner Color Available</strong></p>
-    {% endif %}
-    <a href="/">Back to Lookup</a>
+    <div class="container">
+        <h1>User Information</h1>
+        <p><strong>Username:</strong> {{ user_data.username }}</p>
+        <p><strong>ID:</strong> {{ user_data.id }}</p>
+        <p><strong>Badges:</strong></p>
+        <div>
+            {% for badge in user_data.badges %}
+                <span class="badge">{{ badge }}</span>
+            {% endfor %}
+        </div>
+        <p><strong>Account Created:</strong> {{ user_data.created_at }}</p>
+        <p><strong>Profile Picture:</strong></p>
+        <img src="{{ user_data.avatar_url }}" alt="Profile Picture">
+        {% if user_data.banner_url %}
+            <p><strong>Banner:</strong></p>
+            <img src="{{ user_data.banner_url }}" alt="User Banner" class="banner">
+        {% elif user_data.banner_color %}
+            <p><strong>Banner Color:</strong></p>
+            <div style="width:100%; height:100px; background-color:{{ user_data.banner_color }}"></div>
+        {% else %}
+            <p><strong>No Banner or Banner Color Available</strong></p>
+        {% endif %}
+        <a href="/">Back to Lookup</a>
+    </div>
 </body>
 </html>
