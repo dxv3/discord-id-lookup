@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord User Information</title>
+</head>
+<body>
+    <h1>User Information</h1>
+    <p><strong>Username:</strong> {{ user_data.username }}#{{ user_data.discriminator }}</p>
+    <p><strong>ID:</strong> {{ user_data.id }}</p>
+    <p><strong>Badges:</strong> {{ user_data.badges | join(', ') }}</p>
+    <p><strong>Account Created:</strong> {{ user_data.created_at }}</p>
+    <p><strong>Profile Picture:</strong> <img src="https://cdn.discordapp.com/avatars/{{ user_data.id }}/{{ user_data.avatar }}.png?size=1024" alt="Profile Picture"></p>
+    {% if user_data.banner %}
+        <p><strong>Banner:</strong> <img src="https://cdn.discordapp.com/banners/{{ user_data.id }}/{{ user_data.banner }}.png?size=1024" alt="User Banner"></p>
+    {% elif user_data.banner_color %}
+        <p><strong>Banner Color:</strong> <div style="width:100px; height:50px; background-color:{{ user_data.banner_color }}"></div></p>
+    {% else %}
+        <p><strong>No Banner or Banner Color Available</strong></p>
+    {% endif %}
+    <a href="/">Back to Lookup</a>
+</body>
+</html>
