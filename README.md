@@ -6,3 +6,4 @@ date created
 banner colour
 user pfp
 user banner
+remove wrap
