@@ -59,7 +59,7 @@ def get_user_badges(flags):
     if flags & 1 << 16: badges.append('Verified Bot')
     if flags & 1 << 17: badges.append('Early Verified Bot Developer')
     if flags & 1 << 18: badges.append('Discord Certified Moderator')
-    badges.append('needs fixing, very bugged :(')
+    badges.append('needs fixing, very bugged :( ')
     return badges
 
 if __name__ == '__main__':
