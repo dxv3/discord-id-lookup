@@ -1,4 +1,4 @@
-LOOKUP:
+LOOKUP:\
 username\
 user id\
 badges\
