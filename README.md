@@ -1,8 +1,8 @@
 LOOKUP:\
-username\
+username\ 
 user id\
-badges\
+badges\ tbd
 date created\
-banner colour\
+banner colour\ tbd
 user pfp\
 user banner
