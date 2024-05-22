@@ -1,8 +1,8 @@
 LOOKUP:
-username
-user id
-badges
-date created
-banner colour
-user pfp
-user banner
+username__
+user id__
+badges__
+date created__
+banner colour__
+user pfp__
+user banner__
