@@ -5,4 +5,4 @@ badges\
 date created\
 banner colour\
 user pfp\
-user banner\
+user banner
