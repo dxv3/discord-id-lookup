@@ -42,8 +42,12 @@ def lookup():
             user_data['banner_url'] = None
 
         return render_template('result.html', user_data=user_data)
+    elif response.status_code == 404:
+        return render_template('error.html', error="User not found.")
     else:
-        return render_template('error.html', error="User not found or invalid ID.")
+        return render_template('error.html', error=f"Error fetching user data: {response.status_code}")
+
+
 
 def get_user_badges(flags):
     badges = []
